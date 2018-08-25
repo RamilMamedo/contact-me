@@ -1,0 +1,58 @@
+//  Mixin for loading fonts.
+//  Credits: Bourbon.
+//  @include font-face();
+@mixin font-face(
+  $font-family,
+  $file-path,
+  $weight: normal,
+  $style: normal,
+  $asset-pipeline: false
+) {
+  @font-face {
+    font-family: $font-family;
+    font-weight: $weight;
+    font-style: $style;
+    @if $asset-pipeline==true {
+      src: local('#{$font-family}'), url('#{$file-path}.woff') format('woff'),
+        url('#{$file-path}.woff2') format('woff2');
+    } @else {
+      src: local('#{$font-family}'), url('#{$file-path}.woff') format('woff'),
+        url('#{$file-path}.woff2') format('woff2');
+    }
+  }
+}
+
+//  Mixin for generating ::selection rules for selected text.
+//  @include selection;
+@mixin selection {
+  ::-moz-selection {
+    @content;
+  }
+  ::selection {
+    @content;
+  }
+}
+
+// @include reset-text;
+// Resetting text styles...
+@mixin reset-text {
+  font-family: $custom-font, 'Helvetica Neue', Arial, sans-serif, -apple-system,
+    BlinkMacSystemFont, Roboto, Ubuntu, 'Segoe UI', 'Apple Color Emoji',
+    'Segoe UI Emoji', 'Segoe UI Symbol';
+  font-weight: 400;
+  font-style: normal;
+  //
+  text-align: left;
+  text-align: start;
+  text-decoration: none;
+  text-shadow: none;
+  text-transform: none;
+  //
+  line-height: 1.5;
+  letter-spacing: normal;
+  line-break: auto;
+  //
+  word-break: normal;
+  word-spacing: normal;
+  white-space: normal;
+}

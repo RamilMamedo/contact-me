@@ -1,0 +1,167 @@
+// SASS Variables & Mixins.
+@import 'vars';
+@import 'mixins';
+
+/*
+===========================================
+              =   Fonts   =
+===========================================
+*/
+
+@include font-face('Lucida Grande', '../fonts/LucidaGrande');
+
+/*
+===========================================
+              =   Global   =
+===========================================
+*/
+
+*,
+*:before,
+*:after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+
+html {
+  line-height: 1.15;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+@at-root {
+  @-ms-viewport {
+    width: device-width;
+  }
+}
+
+body {
+  font-family: $custom-font;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  line-height: 1.5;
+  text-align: left;
+  color: #fff;
+  background-color: $background-color;
+
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  min-width: 100vw;
+  min-height: 100vh;
+}
+
+@include selection {
+  color: $text-color;
+  background-color: #009687;
+}
+
+/*
+===========================================
+              =   Section   =
+===========================================
+*/
+
+.section {
+}
+
+/*
+===========================================
+              =   Media   =
+===========================================
+*/
+
+:root {
+  font-size: 1.125rem;
+}
+@media (min-width: 600px) {
+  :root {
+    font-size: 1.5rem;
+  }
+}
+@media (min-width: 900px) {
+  :root {
+    font-size: 1.75rem;
+  }
+}
+@media (min-width: 1200px) {
+  :root {
+    font-size: 2rem;
+  }
+}
+
+
+.messages {
+  overflow: auto;
+  width: 100vw;
+  max-height: 100vh;
+  padding: 0.5rem 0.9rem;
+}
+.bubble {
+  overflow: hidden;
+  display: inline-block;
+  margin: 0 0 0.125rem 0;
+  padding: 0.5rem 0.85rem;
+  line-height: 1.25rem;
+  border-radius: 0.25rem;
+  -webkit-transform-origin: 0 100%;
+  -ms-transform-origin: 0 100%;
+  transform-origin: 0 100%;
+  vertical-align: middle;
+  -webkit-transition: border-radius 0.25s ease-out 0.075s;
+  -o-transition: border-radius 0.25s ease-out 0.075s;
+  transition: border-radius 0.25s ease-out 0.075s;
+}
+.bubble.left.cornered {
+  border-bottom-left-radius: 0;
+}
+.bubble.left {
+  background-color: rgba(206, 206, 206, 0.5);
+}
+.bubble:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: -0.5rem;
+  width: 0.5rem;
+  height: 0.5rem;
+  background-image: url(../img/corner.svg);
+  background-size: 0.5rem 0.5rem;
+  background-position: 0.5rem 0;
+  background-repeat: no-repeat;
+  -webkit-transition: background-position 0.15s ease-in;
+  -o-transition: background-position 0.15s ease-in;
+  transition: background-position 0.15s ease-in;
+}
+.bubble.cornered:after {
+  background-position: 0 0;
+}
+.bubble span {
+  display: block;
+}
+.bubble span.message {
+  opacity: 0;
+}
+.bubble a {
+  color: #0076ff;
+}
+.bubble .loading {
+  position: absolute;
+  width: 2.25rem;
+  font-size: 2rem;
+  line-height: 1rem;
+}
+.bubble .loading b {
+  display: inline-block;
+  color: rgba(0, 0, 0, 0.5);
+}

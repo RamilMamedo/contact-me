@@ -1,0 +1,135 @@
+@font-face {
+  font-family: Lucida Grande;
+  font-style: normal;
+  font-weight: 400;
+  src: local('Lucida Grande'), url(../fonts/LucidaGrande.woff) format('woff'),
+    url(../fonts/LucidaGrande.woff2) format('woff2');
+}
+*,
+:after,
+:before {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html {
+  -ms-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-text-size-adjust: 100%;
+  line-height: 1.15;
+}
+@-ms-viewport {
+  width: device-width;
+}
+body {
+  -ms-flex-align: center;
+  -ms-flex-direction: column;
+  -webkit-box-align: center;
+  -webkit-box-direction: normal;
+  -webkit-box-orient: vertical;
+  align-items: center;
+  background-color: #18191d;
+  color: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-direction: column;
+  font-family: Lucida Grande;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  line-height: 1.5;
+  min-height: 100vh;
+  min-width: 100vw;
+  text-align: left;
+}
+::-moz-selection {
+  background-color: #009687;
+  color: #e4ecf2;
+}
+::selection {
+  background-color: #009687;
+  color: #e4ecf2;
+}
+:root {
+  font-size: 1.125rem;
+}
+@media (min-width: 600px) {
+  :root {
+    font-size: 1.5rem;
+  }
+}
+@media (min-width: 900px) {
+  :root {
+    font-size: 1.75rem;
+  }
+}
+@media (min-width: 1200px) {
+  :root {
+    font-size: 2rem;
+  }
+}
+.messages {
+  max-height: 100vh;
+  overflow: auto;
+  padding: 0.5rem 0.9rem;
+  width: 100vw;
+}
+.bubble {
+  -ms-transform-origin: 0 100%;
+  -o-transition: border-radius 0.25s ease-out 75ms;
+  -webkit-transform-origin: 0 100%;
+  -webkit-transition: border-radius 0.25s ease-out 75ms;
+  border-radius: 0.25rem;
+  display: inline-block;
+  line-height: 1.25rem;
+  margin: 0 0 0.125rem;
+  overflow: hidden;
+  padding: 0.5rem 0.85rem;
+  transform-origin: 0 100%;
+  transition: border-radius 0.25s ease-out 75ms;
+  vertical-align: middle;
+}
+.bubble.left.cornered {
+  border-bottom-left-radius: 0;
+}
+.bubble.left {
+  background-color: hsla(0, 0%, 80.8%, 0.5);
+}
+.bubble:after {
+  -o-transition: background-position 0.15s ease-in;
+  -webkit-transition: background-position 0.15s ease-in;
+  background-image: url(../img/corner.svg);
+  background-position: 0.5rem 0;
+  background-repeat: no-repeat;
+  background-size: 0.5rem 0.5rem;
+  bottom: 0;
+  content: '';
+  height: 0.5rem;
+  left: -0.5rem;
+  position: absolute;
+  transition: background-position 0.15s ease-in;
+  width: 0.5rem;
+}
+.bubble.cornered:after {
+  background-position: 0 0;
+}
+.bubble span {
+  display: block;
+}
+.bubble span.message {
+  opacity: 0;
+}
+.bubble a {
+  color: #0076ff;
+}
+.bubble .loading {
+  font-size: 2rem;
+  line-height: 1rem;
+  position: absolute;
+  width: 2.25rem;
+}
+.bubble .loading b {
+  color: rgba(0, 0, 0, 0.5);
+  display: inline-block;
+}

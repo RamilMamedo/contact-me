@@ -1,0 +1,6 @@
+/.git/
+/node_modules/
+/**/Thumbs.db
+/**/*.DS_Store
+/**/yarn.lock
+/**/package-lock.json
