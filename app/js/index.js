@@ -1,10 +1,10 @@
 window.onload = () => {
   const div = document.createElement('div');
-  div.classList.add('messages');
+  div.classList.add('app');
   document.body.appendChild(div);
-  const messagesEl = document.querySelector('.messages');
+  const app = document.querySelector('.app');
   const typingSpeed = 20;
-  const loadingText = '<b>•</b><b>•</b><b>•</b>';
+  const loadingText = '<i>•</i><i>•</i><i>•</i>';
   let messageIndex = 0;
 
   let getCurrentTime = () => {
@@ -21,7 +21,7 @@ window.onload = () => {
     'Hello there 👋',
     "I'm Ramil",
     'Front-End Developer who loves to code things on the web',
-    `I\'m currently accepting freelance work.<br>
+    `I\'m currently accepting freelance works.<br>
       You can contact me at <a href="mailto:rommelmamedov@gmail.com">rommelmamedov@gmail.com</a>`,
     `
       or just reach me via these social networks:<br>
@@ -49,7 +49,6 @@ window.onload = () => {
     const loadingEl = document.createElement('span');
     bubbleEl.classList.add('bubble');
     bubbleEl.classList.add('is-loading');
-    bubbleEl.classList.add('cornered');
     bubbleEl.classList.add(position === 'right' ? 'right' : 'left');
     messageEl.classList.add('message');
     loadingEl.classList.add('loading');
@@ -68,7 +67,7 @@ window.onload = () => {
   let getDimentions = elements => {
     return (dimensions = {
       loading: {
-        w: '4rem',
+        w: '5.20rem',
         h: '2.25rem'
       },
       bubble: {
@@ -86,8 +85,8 @@ window.onload = () => {
     let loadingDuration =
       message.replace(/<(?:.|\n)*?>/gm, '').length * typingSpeed + 500;
     let elements = createBubbleElements(message, position);
-    messagesEl.appendChild(elements.bubble);
-    messagesEl.appendChild(document.createElement('br'));
+    app.appendChild(elements.bubble);
+    app.appendChild(document.createElement('br'));
     let dimensions = getDimentions(elements);
     elements.bubble.style.width = '0rem';
     elements.bubble.style.height = dimensions.loading.h;
@@ -95,9 +94,9 @@ window.onload = () => {
     elements.message.style.height = dimensions.message.h;
     elements.bubble.style.opacity = 1;
     let bubbleOffset = elements.bubble.offsetTop + elements.bubble.offsetHeight;
-    if (bubbleOffset > messagesEl.offsetHeight) {
+    if (bubbleOffset > app.offsetHeight) {
       let scrollMessages = anime({
-        targets: messagesEl,
+        targets: app,
         scrollTop: bubbleOffset,
         duration: 750
       });
@@ -127,7 +126,7 @@ window.onload = () => {
       easing: 'easeOutElastic'
     });
     let dotsPulse = anime({
-      targets: elements.bubble.querySelectorAll('b'),
+      targets: elements.bubble.querySelectorAll('i'),
       scale: [1, 1.25],
       opacity: [0.5, 1],
       duration: 300,

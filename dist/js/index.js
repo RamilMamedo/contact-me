@@ -2,11 +2,11 @@
 
 window.onload = function () {
   var div = document.createElement('div');
-  div.classList.add('messages');
+  div.classList.add('app');
   document.body.appendChild(div);
-  var messagesEl = document.querySelector('.messages');
+  var app = document.querySelector('.app');
   var typingSpeed = 20;
-  var loadingText = '<b>•</b><b>•</b><b>•</b>';
+  var loadingText = '<i>•</i><i>•</i><i>•</i>';
   var messageIndex = 0;
 
   var getCurrentTime = function getCurrentTime() {
@@ -19,7 +19,7 @@ window.onload = function () {
     if (current >= 22 || current < 5) return 'Have a good night';
   };
 
-  var messages = ['Hello there 👋', "I'm Ramil", 'Front-End Developer who loves to code things on the web', 'I\'m currently accepting freelance work.<br>\n      You can contact me at <a href="mailto:rommelmamedov@gmail.com">rommelmamedov@gmail.com</a>', '\n      or just reach me via these social networks:<br>\n      <a target="_blank" rel="noopener" href="https://www.facebook.com/rommelmamedov">fb.com/ramilmamedov</a><br>\n      <a target="_blank" rel="noopener" href="https://github.com/juliangarnier">github.com/ramilmamedov</a><br>\n      <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/ramil-mamedov">linkedin.com/ramilmamedov</a>\n      ', getCurrentTime(), '👀 Rommel.'];
+  var messages = ['Hello there 👋', "I'm Ramil", 'Front-End Developer who loves to code things on the web', 'I\'m currently accepting freelance works.<br>\n      You can contact me at <a href="mailto:rommelmamedov@gmail.com">rommelmamedov@gmail.com</a>', '\n      or just reach me via these social networks:<br>\n      <a target="_blank" rel="noopener" href="https://www.facebook.com/rommelmamedov">fb.com/ramilmamedov</a><br>\n      <a target="_blank" rel="noopener" href="https://github.com/juliangarnier">github.com/ramilmamedov</a><br>\n      <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/ramil-mamedov">linkedin.com/ramilmamedov</a>\n      ', getCurrentTime(), '👀 Rommel.'];
 
   var getFontSize = function getFontSize() {
     return parseInt(getComputedStyle(document.body).getPropertyValue('font-size'));
@@ -35,7 +35,6 @@ window.onload = function () {
     var loadingEl = document.createElement('span');
     bubbleEl.classList.add('bubble');
     bubbleEl.classList.add('is-loading');
-    bubbleEl.classList.add('cornered');
     bubbleEl.classList.add(position === 'right' ? 'right' : 'left');
     messageEl.classList.add('message');
     loadingEl.classList.add('loading');
@@ -54,7 +53,7 @@ window.onload = function () {
   var getDimentions = function getDimentions(elements) {
     return dimensions = {
       loading: {
-        w: '4rem',
+        w: '5.20rem',
         h: '2.25rem'
       },
       bubble: {
@@ -71,8 +70,8 @@ window.onload = function () {
   var sendMessage = function sendMessage(message, position) {
     var loadingDuration = message.replace(/<(?:.|\n)*?>/gm, '').length * typingSpeed + 500;
     var elements = createBubbleElements(message, position);
-    messagesEl.appendChild(elements.bubble);
-    messagesEl.appendChild(document.createElement('br'));
+    app.appendChild(elements.bubble);
+    app.appendChild(document.createElement('br'));
     var dimensions = getDimentions(elements);
     elements.bubble.style.width = '0rem';
     elements.bubble.style.height = dimensions.loading.h;
@@ -80,9 +79,9 @@ window.onload = function () {
     elements.message.style.height = dimensions.message.h;
     elements.bubble.style.opacity = 1;
     var bubbleOffset = elements.bubble.offsetTop + elements.bubble.offsetHeight;
-    if (bubbleOffset > messagesEl.offsetHeight) {
+    if (bubbleOffset > app.offsetHeight) {
       var scrollMessages = anime({
-        targets: messagesEl,
+        targets: app,
         scrollTop: bubbleOffset,
         duration: 750
       });
@@ -112,7 +111,7 @@ window.onload = function () {
       easing: 'easeOutElastic'
     });
     var dotsPulse = anime({
-      targets: elements.bubble.querySelectorAll('b'),
+      targets: elements.bubble.querySelectorAll('i'),
       scale: [1, 1.25],
       opacity: [0.5, 1],
       duration: 300,

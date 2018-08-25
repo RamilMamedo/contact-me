@@ -30,24 +30,16 @@ gulp.task('serve', () => {
 });
 
 gulp.task('spit', () => {
-  gulp
-    .src([
-      './app/index.html',
-    ])
-    .pipe(gulp.dest('./dist/'));
+  gulp.src(['./app/index.html']).pipe(gulp.dest('./dist/'));
 });
 
 gulp.task('img', () => {
-  gulp
-    .src(
-      './app/img/**'
-    )
-    .pipe(gulp.dest('./dist/img/'));
+  gulp.src('./app/img/**').pipe(gulp.dest('./dist/img/'));
 });
 
 gulp.task('style', () => {
   let plugins = [
-    autoprefixer({ browsers: ['last 5 version'] }),
+    // autoprefixer({ browsers: ['last 5 version'] }),
     cssnano({
       safe: true,
       discardComments: false,
@@ -58,7 +50,10 @@ gulp.task('style', () => {
     .src('./app/sass/*.scss')
     .pipe(sass({ outputStyle: 'expand' }))
     .pipe(postcss(plugins))
-    .on('error', message => {gutil.log(gutil.colors.red('[Error]'), message.toString());notify.onError();})
+    .on('error', message => {
+      gutil.log(gutil.colors.red('[Error]'), message.toString());
+      notify.onError();
+    })
     .pipe(rename({ suffix: '.min', prefix: '' }))
     .pipe(gulp.dest('./dist/css'))
     .pipe(browserSync.reload({ stream: true }));
@@ -69,7 +64,9 @@ gulp.task('script', () => {
     .src('./app/js/index.js')
     .pipe(babel({ presets: ['env'] }))
     .pipe(gulp.dest('./dist/js/'));
-    Scripts();
+    setTimeout(function() {
+      Scripts();
+    }, 1000);
 });
 
 Scripts = () => {
@@ -77,7 +74,9 @@ Scripts = () => {
     .src(['./app/libs/anime.js', './dist/js/index.js'])
     .pipe(concat('index.min.js'))
     .pipe(uglify())
-    .on('error', message => {gutil.log(gutil.colors.red('[Error]'), message.toString());})
+    .on('error', message => {
+      gutil.log(gutil.colors.red('[Error]'), message.toString());
+    })
     .pipe(gulp.dest('./dist/js'))
     .pipe(browserSync.reload({ stream: true }));
 };
@@ -85,7 +84,7 @@ Scripts = () => {
 gulp.task('watch', ['style', 'script', 'serve', 'spit'], () => {
   gulp.watch('./app/*.html', ['spit']);
   gulp.watch('./app/sass/**.scss', ['style']);
-  gulp.watch(['./app/libs/*.js', './app/js/index.js'], ['script']);
+  gulp.watch(['./app/js/index.js'], ['script']);
   gulp.watch('./app/*.html', browserSync.reload);
 });
 
