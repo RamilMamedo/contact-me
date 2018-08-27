@@ -1,36 +1,36 @@
 window.onload = () => {
-  const div = document.createElement('div');
-  div.classList.add('app');
-  document.body.appendChild(div);
+  const main = document.createElement('main');
+  main.classList.add('app');
+  document.body.appendChild(main);
   const app = document.querySelector('.app');
   const typingSpeed = 20;
   const loadingText = '<i>•</i><i>•</i><i>•</i>';
   let messageIndex = 0;
+
+  const messageTime = '<b>' + new Date().getHours() + ':' + new Date().getMinutes() + '</b>';
 
   let getCurrentTime = () => {
     const date = new Date();
     const hours = date.getHours();
     const minutes = date.getMinutes();
     const current = hours + minutes * 0.01;
-    if (current >= 5 && current < 19) return 'Have a nice day';
-    if (current >= 19 && current < 22) return 'Have a nice evening';
-    if (current >= 22 || current < 5) return 'Have a good night';
+    if (current >= 5 && current < 19) return 'Have a nice day! ✨';
+    if (current >= 19 && current < 22) return 'Have a nice evening! ☀️';
+    if (current >= 22 || current < 5) return 'Have a good night! 🌛';
   };
-
   const messages = [
-    'Hello there 👋',
-    "I'm Ramil",
-    'Front-End Developer who loves to code things on the web',
+    'Hello there 🤘🏻',
+    'I\'m Ramil. Front-End Developer who loves to code things on the web',
     `I\'m currently accepting freelance works.<br>
-      You can contact me at <a href="mailto:rommelmamedov@gmail.com">rommelmamedov@gmail.com</a>`,
-    `
-      or just reach me via these social networks:<br>
-      <a target="_blank" rel="noopener" href="https://www.facebook.com/rommelmamedov">fb.com/ramilmamedov</a><br>
-      <a target="_blank" rel="noopener" href="https://github.com/juliangarnier">github.com/ramilmamedov</a><br>
-      <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/ramil-mamedov">linkedin.com/ramilmamedov</a>
-      `,
-    getCurrentTime(),
-    '👀 Rommel.'
+     You can see my
+     <a href="https://rommel7.github.io/" target="_blank" rel="noopener">CV</a> and
+     <a target="_blank" rel="noopener" href="https://github.com/juliangarnier">GitHub</a> by these links.`,
+    `or you just can reach me via these methods:<br>
+     <a href="mailto:rommelmamedov@gmail.com">rommelmamedov@gmail.com</a><br>
+     <a target="_blank" rel="noopener" href="https://www.facebook.com/rommelmamedov">fb.com/ramilmamedov</a><br>
+     <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/ramil-mamedov">linkedin.com/ramilmamedov</a>
+    `,
+    `<span class="last-message">Thank you!  ${getCurrentTime()}</span>`
   ];
 
   let getFontSize = () => {
@@ -44,16 +44,19 @@ window.onload = () => {
   };
 
   let createBubbleElements = (message, position) => {
-    const bubbleEl = document.createElement('div');
+    const bubbleEl = document.createElement('section');
     const messageEl = document.createElement('span');
     const loadingEl = document.createElement('span');
+    // Time
+    const messageTime = document.createElement('b');
     bubbleEl.classList.add('bubble');
     bubbleEl.classList.add('is-loading');
-    bubbleEl.classList.add(position === 'right' ? 'right' : 'left');
     messageEl.classList.add('message');
     loadingEl.classList.add('loading');
     messageEl.innerHTML = message;
     loadingEl.innerHTML = loadingText;
+    // Time
+    messageTime.innerHTML = new Date().getHours() + ':' + new Date().getMinutes();
     bubbleEl.appendChild(loadingEl);
     bubbleEl.appendChild(messageEl);
     bubbleEl.style.opacity = 0;
@@ -64,10 +67,17 @@ window.onload = () => {
     };
   };
 
+  setTimeout(function() {
+    let bubblesList = document.querySelectorAll('.bubble');
+    console.log(bubblesList);
+    let lastBubble = bubblesList[bubblesList.length - 1];
+    console.log(lastBubble);
+  }, 14500);
+
   let getDimentions = elements => {
     return (dimensions = {
       loading: {
-        w: '5.20rem',
+        w: '5.85rem',
         h: '2.25rem'
       },
       bubble: {
@@ -162,11 +172,7 @@ window.onload = () => {
         width: [dimensions.loading.w, dimensions.bubble.w],
         height: [dimensions.loading.h, dimensions.bubble.h],
         marginTop: 0,
-        marginLeft: 0,
-        begin: function() {
-          if (messageIndex < messages.length)
-            elements.bubble.classList.remove('cornered');
-        }
+        marginLeft: 0
       });
     }, loadingDuration - 50);
   };
@@ -176,11 +182,7 @@ window.onload = () => {
     if (!message) return;
     sendMessage(message);
     ++messageIndex;
-    setTimeout(
-      sendMessages,
-      message.replace(/<(?:.|\n)*?>/gm, '').length * typingSpeed +
-        anime.random(900, 1200)
-    );
+    setTimeout(sendMessages, message.replace(/<(?:.|\n)*?>/gm, '').length * typingSpeed + anime.random(900, 1200));
   };
   sendMessages();
 };
