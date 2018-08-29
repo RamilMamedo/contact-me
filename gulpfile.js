@@ -25,12 +25,20 @@ gulp.task('serve', () => {
       baseDir: './dist'
     },
     notify: false,
-    open: false
+    open: false,
+    port: 3020
   });
 });
 
 gulp.task('spit', () => {
-  gulp.src(['./app/index.html']).pipe(gulp.dest('./dist/'));
+  gulp.src([
+    './app/index.html',
+    './app/favicon.ico',
+    './app/manifest.json',
+    './app/manifest.webapp',
+    './app/browserconfig.xml'
+  ])
+  .pipe(gulp.dest('./dist/'));
 });
 
 gulp.task('img', () => {
@@ -64,9 +72,9 @@ gulp.task('script', () => {
     .src('./app/js/index.js')
     .pipe(babel({ presets: ['env'] }))
     .pipe(gulp.dest('./dist/js/'));
-    setTimeout(function() {
-      Scripts();
-    }, 1000);
+  setTimeout(function() {
+    Scripts();
+  }, 1000);
 });
 
 Scripts = () => {

@@ -2,40 +2,76 @@
 <html lang="en" dir="ltr">
 
 <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8">
     <title>Ramil Mamedov</title>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
     <base href="./">
     <!-- Some SEO Tags -->
-    <meta name="description" content="" />
-    <meta property="og:description" content="" />
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="Ramil Mamedov" />
-    <meta property="og:url" content="http://example.com/page.html" />
-    <link rel="index" href="./" />
-    <link rel="canonical" href="./" />
+    <meta name="description" content=""/>
+    <meta property="og:description" content=""/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:title" content="Ramil Mamedov"/>
+    <meta property="og:url" content="http://example.com/page.html"/>
+    <link rel="index" href="./"/>
+    <link rel="canonical" href="./"/>
     <!-- Installation credentials for the website -->
-    <link rel="manifest" href="./manifest.json" />
-    <meta name="theme-color" content="#3a4047" />
-    <meta name="msapplication-TileColor" content="#808080" />
-    <meta name="msapplication-TileImage" content="img/favicons/" />
-    <meta name="msapplication-config" content="browserconfig.xml" />
+    <link rel="manifest" href="./manifest.json"/>
+    <meta name="theme-color" content="#3a4047"/>
+    <meta name="mobile-web-app-capable" content="yes"/>
+    <meta name="application-name" content="ContactMe"/>
+    <!-- Windows Tiles -->
+    <meta name="msapplication-starturl" content="./"/>
+    <meta name="msapplication-TileColor" content="#ffffff"/>
+    <meta name="msapplication-TileImage" content="img/favicons/microsoft/mstile-144x144.png"/>
+    <meta name="msapplication-config" content="./browserconfig.xml"/>
+    <!-- Yandex -->
+    <link rel="yandex-tableau-widget" href="img/favicons/yandex/yandex-browser-manifest.json"/>
     <!-- Favicons -->
-    <link href="img/favicons/" rel="icon" type="image/x-icon" />
-    <link href="img/favicons/" rel="icon" type="image/png" sizes="16x16" />
-    <link href="img/favicons/" rel="icon" type="image/png" sizes="32x32" />
-    <link href="img/favicons/" rel="icon" type="image/svg+xml" sizes="any" />
-    <link href="img/favicons/" rel="apple-touch-icon" type="image/png" sizes="180x180" />
-    <link href="img/favicons/" rel="apple-touch-icon-precomposed" type="image/png" sizes="180x180" />
+    <link href="img/favicons/favicon-32x32.png" rel="icon" type="image/png" sizes="16x16"/>
+    <link href="img/favicons/favicon-16x16.png" rel="icon" type="image/png" sizes="32x32"/>
+    <link href="img/favicons/favicon-228x228.png" rel="icon" type="image/png" sizes="228x228"/>
+    <link href="img/favicons/firefox/favicon.svg" rel="mask-icon" color="#ffffff">
+    <link href="img/favicons/favicon.ico" rel="icon" type="image/x-icon"/>
+    <link href="img/favicons/firefox/favicon.svg" rel="icon" type="image/svg+xml" sizes="any"/>
+    <!-- Apple -->
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+    <link href="img/favicons/apple/apple-touch-icon-57x57.png" rel="apple-touch-icon" sizes="57x57"/>
+    <link href="img/favicons/apple/apple-touch-icon-60x60.png" rel="apple-touch-icon" sizes="60x60"/>
+    <!-- For the iPad mini and the first- and second-generation iPad on iOS ≤ 6: -->
+    <link href="img/favicons/apple/apple-touch-icon-72x72.png" rel="apple-touch-icon" sizes="72x72"/>
+    <!-- For the iPad mini and the first- and second-generation iPad on iOS ≥ 7: -->
+    <link href="img/favicons/apple/apple-touch-icon-76x76.png" rel="apple-touch-icon" sizes="76x76"/>
+    <!-- For iPhone with high-resolution Retina display running iOS ≤ 6: -->
+    <link href="img/favicons/apple/apple-touch-icon-114x114.png" rel="apple-touch-icon" sizes="114x114"/>
+    <!-- For iPhone with high-resolution Retina display running iOS ≥ 7: -->
+    <link href="img/favicons/apple/apple-touch-icon-120x120.png" rel="apple-touch-icon" sizes="120x120"/>
+    <!-- For iPad with high-resolution Retina display running iOS ≤ 6: -->
+    <link href="img/favicons/apple/apple-touch-icon-144x144.png" rel="apple-touch-icon" sizes="144x144"/>
+    <!-- For iPad with high-resolution Retina display running iOS ≥ 7: -->
+    <link href="img/favicons/apple/apple-touch-icon-152x152.png" rel="apple-touch-icon" sizes="152x152"/>
+    <link href="img/favicons/apple/apple-touch-icon-180x180.png" rel="apple-touch-icon" sizes="180x180"/>
+    <link href="img/favicons/apple/apple-touch-startup-image-320x460.png"   rel="apple-touch-startup-image" media="(device-width: 320px) and (device-height: 480px) and (-webkit-device-pixel-ratio: 1)"/>
+    <link href="img/favicons/apple/apple-touch-startup-image-640x920.png"   rel="apple-touch-startup-image" media="(device-width: 320px) and (device-height: 480px) and (-webkit-device-pixel-ratio: 2)"/>
+    <link href="img/favicons/apple/apple-touch-startup-image-640x1096.png"  rel="apple-touch-startup-image" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)"/>
+    <link href="img/favicons/apple/apple-touch-startup-image-750x1294.png"  rel="apple-touch-startup-image" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)"/>
+    <link href="img/favicons/apple/apple-touch-startup-image-1182x2208.png" rel="apple-touch-startup-image" media="(device-width: 414px) and (device-height: 736px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 3)"/>
+    <link href="img/favicons/apple/apple-touch-startup-image-1242x2148.png" rel="apple-touch-startup-image" media="(device-width: 414px) and (device-height: 736px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 3)"/>
+    <link href="img/favicons/apple/apple-touch-startup-image-748x1024.png"  rel="apple-touch-startup-image" media="(device-width: 768px) and (device-height: 1024px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 1)"/>
+    <link href="img/favicons/apple/apple-touch-startup-image-768x1004.png"  rel="apple-touch-startup-image" media="(device-width: 768px) and (device-height: 1024px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 1)"/>
+    <link href="img/favicons/apple/apple-touch-startup-image-1496x2048.png" rel="apple-touch-startup-image" media="(device-width: 768px) and (device-height: 1024px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 2)"/>
+    <link href="img/favicons/apple/apple-touch-startup-image-1536x2008.png" rel="apple-touch-startup-image" media="(device-width: 768px) and (device-height: 1024px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 2)"/>
+    <!-- For non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+    <link rel="apple-touch-icon-precomposed" href="img/favicons/apple/apple-touch-icon-precomposed.png">
     <!-- Information About Author -->
-    <link rel="me" href="sms:+994557024284" />
-    <meta name="author" content="Ramil Mamedov" />
-    <link rel="me" href="mailto:rommelmamedov@gmailm.com" />
+    <link rel="me" href="sms:+994557024284"/>
+    <meta name="author" content="Ramil Mamedov"/>
+    <link rel="me" href="mailto:rommelmamedov@gmailm.com"/>
     <!-- StyleSheets -->
-    <link rel="stylesheet" href="css/style.min.css" />
+    <link href="./css/style.min.css" rel="stylesheet" type="text/css"/>
     <!-- Scripts -->
-    <script src="js/index.min.js"></script>
+    <script src="./js/index.min.js" type="text/javascript"></script>
 </head>
 
 <body></body>
